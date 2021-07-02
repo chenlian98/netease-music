@@ -1,5 +1,5 @@
 # netease-music
-
+//萌新小白写得一个移动端的网易云音乐
 ## Project setup
 ```
 npm install
