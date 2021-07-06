@@ -2,18 +2,18 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import ElementUI from "element-ui";
+import ElementXComponents from "../ElementXComponents.js";
 import "element-ui/lib/theme-chalk/index.css";
-import api from '../api.js'
+import api from "../api.js";
 
-Vue.use(ElementUI);
-
-Vue.prototype.$http = api
+// import ElementUI from "element-ui";
+Vue.prototype.$http = api;
+// Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
-//http://localhost:4000/captcha/sent?phone=18092697582
 new Vue({
   router,
   store,
+  ElementXComponents,
   render: (h) => h(App),
 }).$mount("#app");
