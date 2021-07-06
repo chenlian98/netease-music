@@ -11,7 +11,7 @@
     >
       <el-row :gutter="150">
         <el-col :span="3">
-          <el-form-item  label="手机号登录" prop="pass"></el-form-item>
+          <el-form-item label="手机号登录" prop="pass"></el-form-item>
         </el-col>
         <el-col :span="18">
           <el-input
@@ -25,7 +25,9 @@
       </el-row>
       <el-row :gutter="150" :class="['item']">
         <el-col :span="3">
-          <el-button type="primary" @click="phoneCode()">获取手机验证码</el-button>
+          <el-button type="primary" @click="phoneCode()"
+            >获取手机验证码</el-button
+          >
         </el-col>
         <el-col :span="18">
           <el-input
