@@ -1,19 +1,6 @@
 <template>
   <div class="container">
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo nav"
-      mode="horizontal"
-      @select="handleSelect"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
-      <el-menu-item index="1" disabled>发现音乐</el-menu-item>
-      <el-menu-item index="2">我的音乐</el-menu-item>
-      <el-menu-item index="3">朋友</el-menu-item>
-      <el-menu-item index="3" disabled>商城</el-menu-item>
-    </el-menu>
+   <nav-component/>
     <el-container class="my">
       <el-aside width="250px">
         <div class="my">
@@ -29,77 +16,237 @@
       <el-container>
         <el-main>
           <div class="box">
-            <el-row :gutter="20">
-              <el-col :span="8">
-                <div>
-                  <img src="https://p1.music.126.net/1WDelIPIXlG3YYyJk7zBYA==/109951165462542435.jpg?param=200y200">
+            <el-row :gutter="0">
+              <el-col :span="5">
+                <div class="cover">
+                  <img
+                    src="https://p1.music.126.net/1WDelIPIXlG3YYyJk7zBYA==/109951165462542435.jpg?param=200y200"
+                  />
                 </div>
               </el-col>
               <el-col :span="10">
                 <div class="likeMusic">
-                  <div class="">我喜欢的音乐</div>
-                  <div class="">
+                  <div class="like">我喜欢的音乐</div>
+                  <div class="username">
                     <span>用户名</span>
                     <span>2018-11-20创建</span>
                   </div>
                   <div class="btn">
-                    <el-button type="primary" icon="el-icon-edit">播放</el-button>
-                    <el-button type="primary" icon="el-icon-share" disabled>收藏</el-button>
-                    <el-button type="primary" icon="el-icon-share">分享</el-button>
-                    <el-button type="primary" icon="el-icon-edit">下载</el-button>
+                    <el-button type="primary" icon="el-icon-edit"
+                      >播放</el-button
+                    >
+                    <el-button type="primary" icon="el-icon-share" disabled
+                      >收藏</el-button
+                    >
+                    <el-button type="primary" icon="el-icon-share"
+                      >分享</el-button
+                    >
+                    <el-button type="primary" icon="el-icon-edit"
+                      >下载</el-button
+                    >
                     <el-button type="primary">评论</el-button>
                   </div>
                 </div>
               </el-col>
             </el-row>
+            <el-row :gutter="0" class="list-title">
+              <el-col :span="5">
+                <div class="list">
+                  <span>歌曲列表</span>
+                  <span>19首歌曲</span>
+                </div>
+              </el-col>
+              <el-col :span="10">
+                <div class="likeMusic">
+                  <span>播放</span>
+                  <span>62次</span>
+                </div>
+              </el-col>
+            </el-row>
+            <el-table :data="tableData" style="width: 100%">
+              <el-table-column label="歌曲标题" width="180">
+                <template slot-scope="scope">
+                  <i class="el-icon-time"></i>
+                  <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column label="时长" width="180">
+                <template slot-scope="scope">
+                  <el-popover trigger="hover" placement="top">
+                    <p>姓名: {{ scope.row.name }}</p>
+                    <p>住址: {{ scope.row.address }}</p>
+                    <div slot="reference" class="name-wrapper">
+                      <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                    </div>
+                  </el-popover>
+                </template>
+              </el-table-column>
+              <el-table-column label="歌手" width="180">
+                <template slot-scope="scope">
+                  <el-popover trigger="hover" placement="top">
+                    <p>姓名: {{ scope.row.name }}</p>
+                    <p>住址: {{ scope.row.address }}</p>
+                    <div slot="reference" class="name-wrapper">
+                      <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                    </div>
+                  </el-popover>
+                </template>
+              </el-table-column>
+              <el-table-column label="专辑" width="180">
+                <template slot-scope="scope">
+                  <el-popover trigger="hover" placement="top">
+                    <p>姓名: {{ scope.row.name }}</p>
+                    <p>住址: {{ scope.row.address }}</p>
+                    <div slot="reference" class="name-wrapper">
+                      <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                    </div>
+                  </el-popover>
+                </template>
+              </el-table-column>
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                  <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)"
+                    >编辑</el-button
+                  >
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    @click="handleDelete(scope.$index, scope.row)"
+                    >删除</el-button
+                  >
+                </template>
+              </el-table-column>
+            </el-table>
           </div>
-
         </el-main>
       </el-container>
     </el-container>
+    <TOPComponent/>
   </div>
 </template>
 <script>
+import TOPComponent from "@/components/TOPComponent";
+import NavComponent from "@/components/NavComponent";
 export default {
+  components: {
+    TOPComponent,
+    NavComponent
+  },
   data() {
     return {
       activeIndex: "1",
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄",
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+      ],
     };
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
+    handleEdit(index, row) {
+      console.log(index, row);
+    },
+    handleDelete(index, row) {
+      console.log(index, row);
+    }
   },
 };
 </script>
 <style lang="less" scoped>
-@calcSize: calc(100vh - 61px);
 @center: 0 auto;
 .el-main {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-  height: @calcSize;
-  //line-height: 160px;
+  padding: 40px 0 0;
   .box {
-      padding: 40px;
+    .list-title {
+      margin-top: 20px;
+      border-bottom: 3px solid red;
+      padding-bottom: 5px;
+    }
+    .cover {
+
+    }
+    .likeMusic {
+      .like,
+      .username {
+        color: #000;
+        margin-bottom: 10px;
+      }
+    }
   }
 }
-.el-header, .el-footer {
-  background-color: #B3C0D1;
+.el-header,
+.el-footer {
+  background-color: #b3c0d1;
   color: #333;
   text-align: center;
   line-height: 60px;
 }
 
 .el-aside {
-  background-color: #D3DCE6;
+  background-color: #d3dce6;
   color: #333;
   text-align: center;
   line-height: 50px;
+  .my {
+    padding-top: 40px;
+  }
   .add-songList {
-    span{
+    span {
       margin-right: 7px;
     }
     button {

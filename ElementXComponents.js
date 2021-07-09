@@ -14,7 +14,12 @@ import {
     Main,
     Footer,
     Aside,
-    Loading
+    Loading,
+    Table,
+    TableColumn,
+    Tag,
+    Popover,
+    Backtop,
 } from "element-ui";
 Vue.use(Row);
 Vue.use(Form);
@@ -30,6 +35,11 @@ Vue.use(Header);
 Vue.use(Main);
 Vue.use(Footer);
 Vue.use(Aside);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Tag);
+Vue.use(Popover);
+Vue.use(Backtop);
 
 Vue.prototype.$loading = Loading.service;
 
