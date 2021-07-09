@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-   <nav-component/>
+    <nav-component />
     <el-container class="my">
       <el-aside width="250px">
         <div class="my">
@@ -123,7 +123,7 @@
         </el-main>
       </el-container>
     </el-container>
-    <TOPComponent/>
+    <TOPComponent />
   </div>
 </template>
 <script>
@@ -132,7 +132,7 @@ import NavComponent from "@/components/NavComponent";
 export default {
   components: {
     TOPComponent,
-    NavComponent
+    NavComponent,
   },
   data() {
     return {
@@ -200,7 +200,7 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-    }
+    },
   },
 };
 </script>
@@ -218,7 +218,6 @@ export default {
       padding-bottom: 5px;
     }
     .cover {
-
     }
     .likeMusic {
       .like,

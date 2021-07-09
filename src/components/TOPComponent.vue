@@ -13,7 +13,7 @@ export default {
     },
     scrollMonitor() {
       let sTop = document.body.scrollTop || document.documentElement.scrollTop;
-      console.log(sTop)
+      console.log(sTop);
       if (sTop > 30) {
         this.$refs.top.style.display = "block";
       } else {

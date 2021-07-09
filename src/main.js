@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import Components from "../ElementXComponents.js";
 import "element-ui/lib/theme-chalk/index.css";
-import "normalize.css"
+import "normalize.css";
 
 // import api from "../api.js";
 // Vue.prototype.$http = api;
