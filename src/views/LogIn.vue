@@ -34,7 +34,7 @@
             type="text"
             v-model="ruleForm.pass"
             autocomplete="off"
-            oninput = "value=value.replace(/[^\d]/g,'')"
+            oninput="value=value.replace(/[^\d]/g,'')"
             maxlength="4"
           ></el-input>
         </el-col>
@@ -46,7 +46,8 @@
         <el-col :span="21">
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')"
-            >登录</el-button>
+              >登录</el-button
+            >
             <el-button @click="resetForm('ruleForm')">重置</el-button>
           </el-form-item>
         </el-col>
@@ -57,6 +58,8 @@
 
 <script>
 import axios from "axios";
+import Wapiti from "../../api.js";
+let api = Wapiti.http;
 export default {
   name: "LogIn",
   data() {
@@ -96,7 +99,10 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          axios.get(`${this.$http.apiBaseUrl}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`, )
+          axios
+            .get(
+              `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`
+            )
             .then(function (response) {
               console.log(response);
               location.href = "Home.vue";
@@ -116,14 +122,15 @@ export default {
     phoneCode() {
       //发送手机验证码
       // console.log(axios)
-      axios.get(`${this.$http.apiBaseUrl}captcha/sent?phone=${this.ruleForm.Phone}`,)
+      axios
+        .get(`${api}captcha/sent?phone=${this.ruleForm.Phone}`)
         .then(function (response) {
-          alert('发送成功 ')
+          alert("发送成功 ");
           console.log(response);
         })
         .catch(function (error) {
           console.log(error);
-          console.log('失败');
+          console.log("失败");
         });
     },
   },
@@ -145,11 +152,11 @@ export default {
   .item {
     margin-bottom: 15px;
   }
-  /deep/input[type=number] {
-    -moz-appearance:textfield;
+  /deep/input[type="number"] {
+    -moz-appearance: textfield;
   }
-  /deep/input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
+  /deep/input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }

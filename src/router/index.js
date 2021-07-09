@@ -2,8 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LogIn from "../views/LogIn.vue";
 
-
-// console.log(LogIn);
 Vue.use(VueRouter);
 
 const routes = [
@@ -11,6 +9,11 @@ const routes = [
     path: "/",
     name: "LogIn",
     component: LogIn,
+  },
+  {
+    path: "/Home",
+    name: "Home",
+    component: () => import("../views/Home"),
   },
 ];
 
