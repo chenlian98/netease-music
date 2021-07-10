@@ -20,6 +20,16 @@
 <script>
 export default {
   name: "NavComponent",
+  data() {
+    return {
+      activeIndex: "1",
+    };
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
+  },
 };
 </script>
 

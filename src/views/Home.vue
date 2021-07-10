@@ -136,7 +136,6 @@ export default {
   },
   data() {
     return {
-      activeIndex: "1",
       tableData: [
         {
           date: "2016-05-02",
@@ -192,9 +191,6 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     handleEdit(index, row) {
       console.log(index, row);
     },
