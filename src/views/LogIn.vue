@@ -11,12 +11,26 @@
     >
       <el-row :gutter="150">
         <el-col :span="3">
-          <el-form-item label="手机号登录" prop="pass"></el-form-item>
+          <el-form-item label="手机号" prop="pass"></el-form-item>
         </el-col>
         <el-col :span="18">
           <el-input
             type="text"
             v-model="ruleForm.Phone"
+            autocomplete="off"
+            oninput="value=value.replace(/[^\d]/g,'')"
+            maxlength="11"
+          ></el-input>
+        </el-col>
+      </el-row>
+      <el-row :gutter="150">
+        <el-col :span="3">
+          <el-form-item label="密码" prop="pass"></el-form-item>
+        </el-col>
+        <el-col :span="18">
+          <el-input
+            type="text"
+            v-model="ruleForm.pwd"
             autocomplete="off"
             oninput="value=value.replace(/[^\d]/g,'')"
             maxlength="11"
@@ -87,6 +101,7 @@ export default {
         pass: "",
         Phone: "",
         age: "",
+        pwd:""
       },
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
@@ -95,22 +110,54 @@ export default {
       },
     };
   },
+  mounted() {
+    let loginStatus = `${api}login/status`;
+    //登录得状态
+    axios
+      .get(loginStatus)
+      .then((res) => {
+        let {account,profile} = res.data.data
+        console.log(res);
+        console.log(account);
+        console.log(profile);
+        // axios
+        //     .get(`${api}user/detail?uid=387699584`)
+        //     .then((res) => {
+        //       console.log(res);
+        //     })
+        //     .catch((err) => {
+        //       console.log(err);
+        //     });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
+        // eslint-disable-next-line no-empty
         if (valid) {
-          axios
-            .get(
-              `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`
-            )
-            .then(function (response) {
-              console.log(response);
-              location.href = "Home.vue";
-            })
-            .catch(function (error) {
-              console.log(error);
-              console.log("error submit!!");
-            });
+          // let codeVerify = `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`;
+          // let loginStatus = `${api}login/status`;
+          // axios
+          //   .all([
+          //     axios.get(codeVerify, {
+          //       // 替换接口 这是模拟的假数据
+          //       params: {
+          //         id: 12,
+          //       },
+          //     }),
+          //     axios.get(loginStatus), // 替换接口
+          //   ])
+          //   .then(
+          //     axios.spread((codeVerify, loginStatus) => {
+          //       // 上面两个请求都完成后，才执行这个回调方法
+          //       console.log("codeVerify", codeVerify);
+          //       console.log("loginStatus", loginStatus);
+          //       console.log(loginStatus.data.data)
+          //     })
+          //   );
         } else {
           return false;
         }
