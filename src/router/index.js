@@ -16,32 +16,38 @@ const routes = [
     component: () => import("../views/Home"),
   },
   {
-    path: "/m/admin",
-    name: "admin",
-    component: () => import("../views/m/admin"),
+    path: "/m/MHome",
+    name: "MHome",
+    component: () => import("../views/m/MHome"),
     children: [
       {
         path: "",
-        name: " admin",
-        component: () => import("../views/m/haizhi"),
+        name: "MHome",
+        component: () => import("../views/m/MHome"),
       },
       {
-        path: "haizi",
-        name: "haizi",
-        component: () => import("../views/m/haizhi"),
+        path: "Discovery",
+        name: "Discovery",
+        component: () => import("../views/m/m-views/Discovery"),
       },
       {
-        path: "nihao",
-        name: "nihao",
-        component: () => import("../views/m/nihao"),
+        path: "Podcast",
+        name: "Podcast",
+        component: () => import("../views/m/m-views/Podcast"),
       },
       {
-        path: "posts",
-        name: "posts",
-        component: () => import("../views/m/posts"),
+        path: "User",
+        name: "User",
+        component: () => import("../views/m/m-views/User"),
+      },
+      {
+        path: "Forum",
+        name: "Forum",
+        component: () => import("../views/m/m-views/Forum"),
       },
     ],
   },
+  //404路由
   {
     path: "*",
     name: "NotFound",

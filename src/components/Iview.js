@@ -1,4 +1,5 @@
 import Vue from "vue";
+import "view-design/dist/styles/iview.css";
 // 按需引入部分组件
 import { Carousel, CarouselItem } from "view-design";
 

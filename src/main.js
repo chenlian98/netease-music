@@ -3,7 +3,6 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./components/ElementXComponents";
-import "view-design/dist/styles/iview.css";
 import "./components/Iview";
 import "normalize.css";
 
