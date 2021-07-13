@@ -29,10 +29,9 @@
         </el-col>
         <el-col :span="18">
           <el-input
-            type="text"
+            type="password"
             v-model="ruleForm.pwd"
             autocomplete="off"
-            oninput="value=value.replace(/[^\d]/g,'')"
             maxlength="11"
           ></el-input>
         </el-col>
@@ -59,7 +58,10 @@
         </el-col>
         <el-col :span="21">
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')"
+            <el-button
+              type="primary"
+              :plain="true"
+              @click="submitForm('ruleForm')"
               >登录</el-button
             >
             <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -100,64 +102,66 @@ export default {
       ruleForm: {
         pass: "",
         Phone: "",
-        age: "",
-        pwd:""
+        pwd: "",
       },
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
         Phone: [{ validator: validatePass2, trigger: "blur" }],
-        age: [{ trigger: "blur" }],
       },
     };
-  },
-  mounted() {
-    let loginStatus = `${api}login/status`;
-    //登录得状态
-    axios
-      .get(loginStatus)
-      .then((res) => {
-        let {account,profile} = res.data.data
-        console.log(res);
-        console.log(account);
-        console.log(profile);
-        // axios
-        //     .get(`${api}user/detail?uid=387699584`)
-        //     .then((res) => {
-        //       console.log(res);
-        //     })
-        //     .catch((err) => {
-        //       console.log(err);
-        //     });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
-        // eslint-disable-next-line no-empty
         if (valid) {
-          // let codeVerify = `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`;
-          // let loginStatus = `${api}login/status`;
+          //login/cellphone?phone=18092697583&password=admin2022
+          //手机号登录
+          //let codeVerify = `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`;
+          let Register = `${api}login/cellphone?phone=${this.ruleForm.Phone}&password=${this.ruleForm.pwd}`;
+          //双个请求
           // axios
           //   .all([
-          //     axios.get(codeVerify, {
-          //       // 替换接口 这是模拟的假数据
-          //       params: {
-          //         id: 12,
-          //       },
-          //     }),
-          //     axios.get(loginStatus), // 替换接口
+          //     axios.get(codeVerify),
+          //     axios.get(Register), // 替换接口
           //   ])
           //   .then(
-          //     axios.spread((codeVerify, loginStatus) => {
+          //     axios.spread((codeVerify, Register) => {
           //       // 上面两个请求都完成后，才执行这个回调方法
           //       console.log("codeVerify", codeVerify);
-          //       console.log("loginStatus", loginStatus);
-          //       console.log(loginStatus.data.data)
+          //       console.log(Register.data);
+          //       console.log();
+          //       window.sessionStorage.setItem("token", Register.data.token);
+          //       this.$message({
+          //         message: "恭喜你，这是一条成功消息",
+          //         type: "success",
+          //       });
           //     })
-          //   );
+          //   )
+          //   .catch((err) => {
+          //     console.log(err);
+          //   })
+          //   .finally(() => {
+          //     console.log("完成了");
+          //   });
+          //单个请求
+          axios
+            .get(Register)
+            .then((res) => {
+              console.log(res);
+              localStorage.setItem("token", res.data.token);
+              alert("成功");
+              axios
+                .get(`${api}user/subcount`)
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
           return false;
         }

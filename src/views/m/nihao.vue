@@ -1,18 +1,16 @@
 <template>
-<div>
-  <h1>nihao</h1>
-  <h1>nihao</h1>
-  <h1>nihao</h1>
-  <h1>nihao</h1>
-</div>
+  <div>
+    <h1>nihao</h1>
+    <h1>nihao</h1>
+    <h1>nihao</h1>
+    <h1>nihao</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "nihao"
+  name: "nihao",
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -21,6 +21,11 @@ const routes = [
     component: () => import("../views/m/admin"),
     children: [
       {
+        path: "",
+        name: " admin",
+        component: () => import("../views/m/haizhi"),
+      },
+      {
         path: "haizi",
         name: "haizi",
         component: () => import("../views/m/haizhi"),
@@ -34,9 +39,14 @@ const routes = [
         path: "posts",
         name: "posts",
         component: () => import("../views/m/posts"),
-      }
-    ]
-  }
+      },
+    ],
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    component: () => import("@/views/NotFound"),
+  },
 ];
 
 const router = new VueRouter({

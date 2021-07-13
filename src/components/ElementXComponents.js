@@ -20,7 +20,11 @@ import {
   Tag,
   Popover,
   Backtop,
+  // MessageBox,
+  // Message,
 } from "element-ui";
+
+
 Vue.use(Row);
 Vue.use(Form);
 Vue.use(FormItem);
@@ -40,7 +44,7 @@ Vue.use(TableColumn);
 Vue.use(Tag);
 Vue.use(Popover);
 Vue.use(Backtop);
-
+// Vue.use(Message);
+// Vue.use(MessageBox);
 Vue.prototype.$loading = Loading.service;
 
-export default class Components {}

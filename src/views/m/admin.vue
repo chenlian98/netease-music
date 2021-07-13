@@ -29,9 +29,29 @@
       >
     </el-menu>
     <div class="item">
-      <router-link exact-active-class="active" :to="{name: 'haizi'}">haizi</router-link>
-      <router-link exact-active-class="active"  :to="{name: 'nihao' }">你好</router-link>
-      <router-link exact-active-class="active"  :to="{name: 'posts'}">posts</router-link>
+      <router-link exact-active-class="active" :to="{ name: 'haizi' }"
+        >haizi</router-link
+      >
+      <router-link exact-active-class="active" :to="{ name: 'nihao' }"
+        >你好</router-link
+      >
+      <router-link exact-active-class="active" :to="{ name: 'posts' }"
+        >posts</router-link
+      >
+      <Carousel v-model="value1" loop>
+        <CarouselItem>
+          <div class="demo-carousel">1</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">2</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">3</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">4</div>
+        </CarouselItem>
+      </Carousel>
     </div>
     <router-view />
   </div>
@@ -43,6 +63,7 @@ export default {
   data() {
     return {
       activeIndex2: "1",
+      value1: 0
     };
   },
   methods: {
