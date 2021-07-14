@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import LogIn from "../views/LogIn.vue";
 
 Vue.use(VueRouter);
 
@@ -8,7 +7,7 @@ const routes = [
   {
     path: "/",
     name: "LogIn",
-    component: LogIn,
+    component: () => import("../views/LogIn.vue"),
   },
   {
     path: "/Home",
@@ -20,11 +19,11 @@ const routes = [
     name: "MHome",
     component: () => import("../views/m/MHome"),
     children: [
-      {
-        path: "",
-        name: "MHome",
-        component: () => import("../views/m/MHome"),
-      },
+      // {
+      //   path: "",
+      //   name: "MHome",
+      //   component: () => import("../views/m/MHome"),
+      // },
       {
         path: "Discovery",
         name: "Discovery",

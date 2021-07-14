@@ -11,7 +11,7 @@
         >我的</router-link
       >
       <router-link exact-active-class="active" :to="{ name: 'Forum' }"
-      >论坛</router-link
+        >论坛</router-link
       >
     </div>
     <router-view />
@@ -20,12 +20,12 @@
 
 <script>
 export default {
-  name: "admin",
+  name: "MHome",
 };
 </script>
 
 <style scoped lang="less">
-html{
+html {
   font-size: 13.333333333333334vw;
 }
 .item {

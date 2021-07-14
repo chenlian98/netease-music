@@ -11,9 +11,11 @@ module.exports = {
     [
       "import",
       {
-        libraryName: "view-design",
-        libraryDirectory: "src/components",
+        libraryName: "vant",
+        libraryDirectory: "es",
+        style: true,
       },
+      "vant",
     ],
   ],
 };
