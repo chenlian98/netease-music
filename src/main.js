@@ -2,17 +2,17 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import component from "../components.js";
-import api from "../api.js";
+import "./components/ElementXComponents";
+import "./components/VantCompoents";
+import "normalize.css";
 
-
-
-Vue.prototype.$http = api;
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  component,
   render: (h) => h(App),
 }).$mount("#app");
+
+//http://localhost:3000/cloudsearch?keywords=’许嵩‘
+//http://localhost:3000/song/url?id=167876 //查询到歌曲得id

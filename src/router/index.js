@@ -1,25 +1,61 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-// import index from "../views/index.vue";
 
 Vue.use(VueRouter);
-//路由配置
+
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "LogIn",
+    component: () => import("../views/LogIn.vue"),
   },
   {
-    path: "/Index",
-    name: "Index",
-    component: () => import("../views/index"),
+    path: "/Home",
+    name: "Home",
+    component: () => import("../views/Home"),
+  },
+  {
+    path: "/m/MHome",
+    name: "MHome",
+    component: () => import("../views/m/MHome"),
+    children: [
+      // {
+      //   path: "",
+      //   name: "MHome",
+      //   component: () => import("../views/m/MHome"),
+      // },
+      {
+        path: "Discovery",
+        name: "Discovery",
+        component: () => import("../views/m/m-views/Discovery"),
+      },
+      {
+        path: "Podcast",
+        name: "Podcast",
+        component: () => import("../views/m/m-views/Podcast"),
+      },
+      {
+        path: "User",
+        name: "User",
+        component: () => import("../views/m/m-views/User"),
+      },
+      {
+        path: "Forum",
+        name: "Forum",
+        component: () => import("../views/m/m-views/Forum"),
+      },
+    ],
+  },
+  //404路由
+  {
+    path: "*",
+    name: "NotFound",
+    component: () => import("@/views/NotFound"),
   },
 ];
 
 const router = new VueRouter({
-  mode: "history", //去掉#号
+  mode: "history",
   routes,
 });
 

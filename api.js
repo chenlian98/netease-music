@@ -1,4 +1,5 @@
-const apiBaseUrl = "http://localhost:4000/";
+const http = "http://localhost:3000/";
 export default {
-  apiBaseUrl,
+  http,
 };
+//387699584 用户id 我的
