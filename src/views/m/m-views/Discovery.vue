@@ -26,7 +26,7 @@
 <script>
 import { Toast } from "vant";
 import axios from "axios";
-import {mapState, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Discovery",
@@ -43,7 +43,7 @@ export default {
   methods: {
     ...mapActions(["search"]),
     async onSearch(val) {
-      this.valS = val
+      this.valS = val;
       // Toast(val);
       // this.search()
       // const loading = this.$loading();

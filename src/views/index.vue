@@ -1,15 +1,11 @@
 <template>
- <div class="index">
-   首页
- </div>
+  <div class="index">首页</div>
 </template>
 
 <script>
 export default {
-  name: "index"
+  name: "index",
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

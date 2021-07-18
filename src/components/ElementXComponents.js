@@ -23,7 +23,6 @@ import {
   Message,
 } from "element-ui";
 
-
 Vue.use(Row);
 Vue.use(Form);
 Vue.use(FormItem);
@@ -46,4 +45,3 @@ Vue.use(Backtop);
 Vue.use(Loading.directive);
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$message = Message;
-

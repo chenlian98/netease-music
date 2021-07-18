@@ -5,7 +5,7 @@
       <el-aside width="250px">
         <div class="my">
           <span>我的歌手</span>
-          <span>8</span>
+          <span>8111111</span>
         </div>
         <div class="add-songList">
           <span>我创建的歌单</span>

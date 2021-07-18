@@ -39,7 +39,7 @@
       </el-row>
       <el-row :gutter="24" :class="['item']">
         <el-col :span="3">
-<!--          <el-form-item label="提交登录" prop="pass"></el-form-item>-->
+          <!--          <el-form-item label="提交登录" prop="pass"></el-form-item>-->
         </el-col>
         <el-col :span="21">
           <el-form-item :class="['btn']">
@@ -101,7 +101,10 @@ export default {
           //验证验证码是否正确
           console.log(this.ruleForm.phone + "手机号");
           console.log(this.ruleForm.checkCode + "code");
-          axios.get(`${this.$http.apiBaseUrl}captcha/verify?phone=${this.ruleForm.phone}xxx&captcha=${this.ruleForm.checkCode}`, )
+          axios
+            .get(
+              `${this.$http.apiBaseUrl}captcha/verify?phone=${this.ruleForm.phone}xxx&captcha=${this.ruleForm.checkCode}`
+            )
             .then(function (response) {
               console.log(response);
             })
@@ -135,14 +138,17 @@ export default {
             //发送axios请求
             console.log(this.$http.apiBaseUrl);
             console.log(this.ruleForm.phone);
-            axios.get(`${this.$http.apiBaseUrl}captcha/sent?phone=${this.ruleForm.phone}`,)
+            axios
+              .get(
+                `${this.$http.apiBaseUrl}captcha/sent?phone=${this.ruleForm.phone}`
+              )
               .then(function (response) {
-                alert('发送成功 ')
+                alert("发送成功 ");
                 console.log(response);
               })
               .catch(function (error) {
                 console.log(error);
-                console.log('失败');
+                console.log("失败");
               });
           } else {
             btnCode.innerHTML = `${this.time} 秒后获得验证码`;

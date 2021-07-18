@@ -10,10 +10,8 @@
 
 <script>
 export default {
-  name: "Podcast"
+  name: "Podcast",
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
