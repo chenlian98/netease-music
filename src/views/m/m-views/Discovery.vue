@@ -26,7 +26,7 @@
 <script>
 import { Toast } from "vant";
 import axios from "axios";
-import { mapActions } from "vuex";
+import {mapState, mapActions } from "vuex";
 
 export default {
   name: "Discovery",
@@ -37,22 +37,27 @@ export default {
       url: "",
     };
   },
+  computed: {
+    ...mapState(["valS"]),
+  },
   methods: {
     ...mapActions(["search"]),
     async onSearch(val) {
-      Toast(val);
+      this.valS = val
+      // Toast(val);
       // this.search()
-      const loading = this.$loading();
-      const res = await axios({
-        url: `http://localhost:3000/search?keywords=${val}`,
-      });
-      try {
-        await console.log((this.list = res.data.result.songs));
-      } catch (e) {
-        this.$message.error("网络错误，请刷新重试");
-      } finally {
-        loading.close();
-      }
+      // const loading = this.$loading();
+      // const res = await axios({
+      //   url: `http://localhost:3000/search?keywords=${val}`,
+      // });
+      //console.log((this.list = res.data.result.songs));
+      // try {
+      //   await
+      // } catch (e) {
+      //   this.$message.error("网络错误，请刷新重试");
+      // } finally {
+      //   loading.close();
+      // }
       // axios
       //   .get(`http://localhost:3000/search?keywords=${val}`)
       //   .then((res) => {
