@@ -35,7 +35,7 @@ export default {
 }
 .return_btns a {
   color: #1da2f0;
-  font-family: "Microsoft Yahei",serif;
+  font-family: "Microsoft Yahei", serif;
   text-decoration: underline;
 }
 .return_btns a:link,

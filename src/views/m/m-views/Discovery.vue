@@ -25,15 +25,13 @@
 
 <script>
 import { Toast } from "vant";
-import axios from "axios";
-import {mapState, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Discovery",
   data() {
     return {
       value: "",
-      list: [],
       url: "",
     };
   },
@@ -41,9 +39,9 @@ export default {
     ...mapState(["valS"]),
   },
   methods: {
-    ...mapActions(["search"]),
-    async onSearch(val) {
-      this.valS = val
+    ...mapActions("search", ["getItem"]),
+    onSearch() {
+      // this.valS = val
       // Toast(val);
       // this.search()
       // const loading = this.$loading();
@@ -72,15 +70,17 @@ export default {
       Toast("取消");
     },
     link(id) {
+      console.log(this);
+      console.log(id);
       //查询到歌曲得id
-      axios
-        .get(`http://localhost:3000/song/url?id=${id}`)
-        .then((res) => {
-          this.url = res.data.data[0].url;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // axios
+      //   .get(`http://localhost:3000/song/url?id=${id}`)
+      //   .then((res) => {
+      //     this.url = res.data.data[0].url;
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
   },
 };
