@@ -2,6 +2,7 @@
 import { getArticle } from "../api/api";
 
 export default {
+  msg: "search module",
   namespaced: true,
   state: {
     list: [],

@@ -1,5 +1,5 @@
 <template>
-  <div id="myChart"> Podcast</div>
+  <div id="myChart">Podcast</div>
 </template>
 
 <script>

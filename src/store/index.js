@@ -1,9 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-// import {search} from "api/api";
+import * as search from "./modules/search";
+
 Vue.use(Vuex);
+
 //状态管理
 export default new Vuex.Store({
+  strict: true, //开启日志
   //管理data
   state: {
     valS: "valS",
@@ -15,8 +18,8 @@ export default new Vuex.Store({
   },
   // 执行异步操作 ajax请求
   actions: {},
-  modules: {
-    // search,
-  },
   getters: {},
+  modules: {
+    search,
+  },
 });
