@@ -1,21 +1,21 @@
-//搜索方法
-import { getArticle } from "../api/api";
-
-export default {
-  msg: "search module",
-  namespaced: true,
-  state: {
-    list: [],
-  },
-  mutations: {
-    SET_TABLE_DATA(state, data) {
-      state.list = data;
-    },
-    actions: {
-      async getItem({ commit }, id) {
-        const res = await getArticle(id);
-        commit("SET_ITEM", res.data);
-      },
-    },
-  },
-};
+// //搜索方法
+// import { getSong } from "../api/api";
+//
+// export default {
+//   namespaced: true,
+//   state: {
+//     list: [],
+//     valS: "",
+//     msg: "search module",
+//   },
+//   mutations: {
+//     SET_TABLE_DATA(state, data) {
+//       state.list = data;
+//     },
+//     actions: {
+//       async getItem( val) {
+//         await getSong(val);
+//       },
+//     },
+//   },
+// };

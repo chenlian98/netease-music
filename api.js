@@ -1,4 +1,4 @@
-const http = "http://localhost:3000/";
+const http = "https://music-api-4p49vwxc6-music-api.vercel.app";
 export default {
   http,
 };

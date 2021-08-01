@@ -24,63 +24,62 @@
 </template>
 
 <script>
+let api = `https://music-api-4p49vwxc6-music-api.vercel.app`;
 import { Toast } from "vant";
-import { mapState, mapActions } from "vuex";
+import { Howl } from "howler";
 
+// import { mapState, mapActions } from "vuex";
+import axios from "axios";
 export default {
   name: "Discovery",
   data() {
     return {
       value: "",
       url: "",
+      valS: "",
+      list: [],
     };
   },
   computed: {
-    ...mapState(["valS"]),
+    // ...mapState("search", ["list", "valS"]),
   },
   methods: {
-    ...mapActions("search", ["getItem"]),
-    onSearch() {
-      // this.valS = val
-      // Toast(val);
-      // this.search()
-      // const loading = this.$loading();
-      // const res = await axios({
-      //   url: `http://localhost:3000/search?keywords=${val}`,
-      // });
-      //console.log((this.list = res.data.result.songs));
-      // try {
-      //   await
-      // } catch (e) {
-      //   this.$message.error("网络错误，请刷新重试");
-      // } finally {
-      //   loading.close();
-      // }
-      // axios
-      //   .get(`http://localhost:3000/search?keywords=${val}`)
-      //   .then((res) => {
-      //     // console.log(res.data.result.songs);
-      //     this.list = res.data.result.songs;
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+    // ...mapActions("search", ["getSong"]),
+    onSearch(val) {
+      axios
+        .get(`${api}/search?keywords=${val}`)
+        .then((res) => {
+          // console.log(res.data.result.songs);
+          this.list = res.data.result.songs;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     onCancel() {
       Toast("取消");
     },
     link(id) {
-      console.log(this);
-      console.log(id);
+      // console.log(id);
       //查询到歌曲得id
-      // axios
-      //   .get(`http://localhost:3000/song/url?id=${id}`)
-      //   .then((res) => {
-      //     this.url = res.data.data[0].url;
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      axios
+        .get(`${api}/song/url?id=${id}`)
+        .then((res) => {
+          this.url = res.data.data[0].url;
+          let sound = new Howl({
+            src: [(this.url), "sounds.mp3"],
+            sprite: {
+              blast: [0, 3000],
+              laser: [4000, 1000],
+              winner: [6000, 5000],
+            },
+          });
+          // Shoot the laser!
+          sound.play("laser");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

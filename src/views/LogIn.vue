@@ -117,7 +117,7 @@ export default {
           //login/cellphone?phone=18092697583&password=admin2022
           //手机号登录
           //let codeVerify = `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`;
-          let Register = `${api}login/cellphone?phone=${this.ruleForm.Phone}&password=${this.ruleForm.pwd}`;
+          let Register = `${api}/login/cellphone?phone=${this.ruleForm.Phone}&password=${this.ruleForm.pwd}`;
           //双个请求
           // axios
           //   .all([
@@ -151,7 +151,7 @@ export default {
               localStorage.setItem("token", res.data.token);
               alert("成功");
               axios
-                .get(`${api}user/subcount`)
+                .get(`${api}/user/subcount`)
                 .then((res) => {
                   console.log(res);
                 })
@@ -174,7 +174,7 @@ export default {
       //发送手机验证码
       // console.log(axios)
       axios
-        .get(`${api}captcha/sent?phone=${this.ruleForm.Phone}`)
+        .get(`${api}/captcha/sent?phone=${this.ruleForm.Phone}`)
         .then(function (response) {
           alert("发送成功 ");
           console.log(response);
