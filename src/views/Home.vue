@@ -119,6 +119,7 @@
                 </template>
               </el-table-column>
             </el-table>
+            <audio :src="url"  autoplay controls>播放</audio>
           </div>
         </el-main>
       </el-container>
@@ -188,6 +189,7 @@ export default {
           address: "上海市普陀区金沙江路 1516 弄",
         },
       ],
+      url: "",
     };
   },
   methods: {
@@ -221,6 +223,14 @@ export default {
         color: #000;
         margin-bottom: 10px;
       }
+    }
+    audio {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
     }
   }
 }

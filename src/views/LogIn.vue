@@ -118,46 +118,15 @@ export default {
           //手机号登录
           //let codeVerify = `${api}captcha/verify?phone=${this.ruleForm.Phone}&captcha=${this.ruleForm.pass}`;
           let Register = `${api}/login/cellphone?phone=${this.ruleForm.Phone}&password=${this.ruleForm.pwd}`;
-          //双个请求
-          // axios
-          //   .all([
-          //     axios.get(codeVerify),
-          //     axios.get(Register), // 替换接口
-          //   ])
-          //   .then(
-          //     axios.spread((codeVerify, Register) => {
-          //       // 上面两个请求都完成后，才执行这个回调方法
-          //       console.log("codeVerify", codeVerify);
-          //       console.log(Register.data);
-          //       console.log();
-          //       window.sessionStorage.setItem("token", Register.data.token);
-          //       this.$message({
-          //         message: "恭喜你，这是一条成功消息",
-          //         type: "success",
-          //       });
-          //     })
-          //   )
-          //   .catch((err) => {
-          //     console.log(err);
-          //   })
-          //   .finally(() => {
-          //     console.log("完成了");
-          //   });
-          //单个请求
           axios
             .get(Register)
             .then((res) => {
               console.log(res);
-              localStorage.setItem("token", res.data.token);
+              document.cookie = `cookie=${res.data.token}`;
+              this.$router.push({
+                name: "Home",
+              })
               alert("成功");
-              axios
-                .get(`${api}/user/subcount`)
-                .then((res) => {
-                  console.log(res);
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
             })
             .catch((err) => {
               console.log(err);
