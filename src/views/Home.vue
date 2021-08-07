@@ -32,7 +32,10 @@
                     <span>2018-11-20创建</span>
                   </div>
                   <div class="btn">
-                    <el-button type="primary" icon="el-icon-edit"
+                    <el-button
+                      type="primary"
+                      icon="el-icon-edit"
+                      @click="playMusic()"
                       >播放</el-button
                     >
                     <el-button type="primary" icon="el-icon-share" disabled
@@ -119,7 +122,7 @@
                 </template>
               </el-table-column>
             </el-table>
-            <audio :src="url"  autoplay controls>播放</audio>
+            <audio :src="url" autoplay controls>播放</audio>
           </div>
         </el-main>
       </el-container>
@@ -130,6 +133,9 @@
 <script>
 import TOPComponent from "@/components/TOPComponent";
 import NavComponent from "@/components/NavComponent";
+import axios from "axios";
+import Wapiti from "../../api.js";
+let api = Wapiti.http;
 export default {
   components: {
     TOPComponent,
@@ -198,6 +204,16 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    playMusic() {
+      axios
+        .get(`${api}/user/account`)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

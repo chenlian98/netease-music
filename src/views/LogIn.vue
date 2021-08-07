@@ -69,6 +69,7 @@
         </el-col>
       </el-row>
     </el-form>
+    <button @click="ceshi()">测试</button>
   </div>
 </template>
 
@@ -122,10 +123,11 @@ export default {
             .get(Register)
             .then((res) => {
               console.log(res);
+              localStorage.setItem("token", res.data.token);
               document.cookie = `cookie=${res.data.token}`;
-              this.$router.push({
-                name: "Home",
-              })
+              // this.$router.push({
+              //   name: "Home",
+              // })
               alert("成功");
             })
             .catch((err) => {
@@ -151,6 +153,17 @@ export default {
         .catch(function (error) {
           console.log(error);
           console.log("失败");
+        });
+    },
+    ceshi() {
+      console.log(document.cookie);
+      axios
+        .get(`${api}/login/status`)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
