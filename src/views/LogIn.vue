@@ -156,7 +156,7 @@ export default {
         });
     },
     ceshi() {
-      console.log(document.cookie);
+      // console.log(document.cookie);
       axios
         .get(`${api}/login/status`)
         .then((res) => {

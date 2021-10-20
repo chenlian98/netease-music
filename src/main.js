@@ -5,6 +5,7 @@ import store from "./store";
 import "./components/ElementXComponents";
 import "./components/VantCompoents";
 import "normalize.css";
+import "./axios/api";
 Vue.config.productionTip = false;
 
 new Vue({

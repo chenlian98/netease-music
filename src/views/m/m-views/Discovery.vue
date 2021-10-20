@@ -67,7 +67,7 @@ export default {
         .then((res) => {
           this.url = res.data.data[0].url;
           let sound = new Howl({
-            src: [(this.url), "sounds.mp3"],
+            src: [this.url, "sounds.mp3"],
             sprite: {
               blast: [0, 3000],
               laser: [4000, 1000],

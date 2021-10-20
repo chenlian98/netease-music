@@ -2,7 +2,7 @@
   <div class="NotFound">
     <div class="content">
       <div class="return_btns">
-        对不起，您访问的页面未能找到   ~~，
+        对不起，您访问的页面未能找到 ~~，
         <router-link :to="{ name: 'Home' }">返回首页</router-link>
       </div>
     </div>
